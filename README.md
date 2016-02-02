@@ -1,4 +1,4 @@
-(picture goes here)
+![diagram](https://cloud.githubusercontent.com/assets/16938963/12742977/1764976c-c993-11e5-8d8d-a4b15632fabc.png)
 
 # Overview
 This framework facilitates the development of iOS apps that utilize Wearable or Nearable Devices. It helps developing those apps in just a fraction of the time and requiring only minimal knowledge of the Wearable/Nearable domain.
