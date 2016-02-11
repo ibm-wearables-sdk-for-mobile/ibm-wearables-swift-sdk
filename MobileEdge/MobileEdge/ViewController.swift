@@ -95,11 +95,6 @@ class ViewController: UIViewController, ConnectionStatusDelegate{
         showMobileEdgeDialog("Falling movement of the device was detected!")
     }
     
-    //this function will be called once an extream temperature is detected
-    func extreamTemperatureDetected(additonalInfo: AnyObject!) {
-        print("Extream Temperature Detected!!!!")
-    }
-    
     //this function will be called every time the accelerometer data is changed
     func updateAccelerometerUIData(data: AccelerometerData){
         x.text = "\(Float(data.x))"
