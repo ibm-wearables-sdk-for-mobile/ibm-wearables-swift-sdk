@@ -81,22 +81,22 @@ public class Classification : BaseInterpretation{
             payload["gyroscope"] = [gyroscopeDataArrays[0],gyroscopeDataArrays[1],gyroscopeDataArrays[2],gyroscopeDataArrays[3]]
             
             
-            let t1 = mach_absolute_time()
+            //let t1 = mach_absolute_time()
             
             
             //execute the js engine
             let result = jsEngine.executeMethod("detectGesture", payload: payload).toDictionary()
             
-            let t2 = mach_absolute_time()
+            //let t2 = mach_absolute_time()
             
-            
+            /*
             let elapsed = t2 - t1
             var timeBaseInfo = mach_timebase_info_data_t()
             mach_timebase_info(&timeBaseInfo)
             let elapsedNano = elapsed * UInt64(timeBaseInfo.numer) / UInt64(timeBaseInfo.denom);
             
-            //print("Time \(Double(elapsedNano) / 1000000000.0) sec")
-            
+            print("Time \(Double(elapsedNano) / 1000000000.0) sec")
+            */
             
             //remove the first 4 value from the buffer
             accelerometerDataArrays.removeFirst(4)
