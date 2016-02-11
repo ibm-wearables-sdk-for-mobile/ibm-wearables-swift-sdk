@@ -1,0 +1,10 @@
+framework module IBMMobileEdge {
+  umbrella header "IBMMobileEdge.h"
+
+  export *
+  module * { export * }
+}
+
+module IBMMobileEdge.Swift {
+    header "IBMMobileEdge-Swift.h"
+}
