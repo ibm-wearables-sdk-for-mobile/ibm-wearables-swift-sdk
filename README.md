@@ -27,6 +27,9 @@ The client-side components of the Gesture Recognition are open source and are av
 ***Act now to Secure your free access to the Gesture Recognition cloud service by registering at: http://wearables.mybluemix.net/*** 
 
 # License
+
+Please refer to the [License](https://github.com/ibm-wearables-sdk-for-mobile/ios/blob/master/License.txt) text file.
+
 © Copyright 2016 IBM Corp.
   Licensed under the Mobile Edge iOS Framework License (the "License");
   you may not use this file except in compliance with the License. You may find
