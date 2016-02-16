@@ -408,7 +408,6 @@
 				INFOPLIST_FILE = MobileEdge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mobilefirst.mobileedge.demo;
 				PRODUCT_NAME = DemoApp;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MobileEdge/DemoApp-Bridging-Header.h";
@@ -432,7 +431,6 @@
 				INFOPLIST_FILE = MobileEdge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mobilefirst.mobileedge.demo;
 				PRODUCT_NAME = DemoApp;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MobileEdge/DemoApp-Bridging-Header.h";
