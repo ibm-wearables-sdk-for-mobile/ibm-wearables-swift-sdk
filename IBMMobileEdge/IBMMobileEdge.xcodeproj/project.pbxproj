@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		E53AEF0D1C3A95CC00416ECE /* Classification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53AEF0C1C3A95CC00416ECE /* Classification.swift */; };
-		E5697C6E1C58BC2B008FB6FC /* commonClassifier.js in Resources */ = {isa = PBXBuildFile; fileRef = E5697C6D1C58BC2B008FB6FC /* commonClassifier.js */; };
 		E56E3BCD1C0C887A00746B64 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56E3BCC1C0C887A00746B64 /* CoreBluetooth.framework */; };
 		E56E3BD41C0C8AB600746B64 /* SensorTag.swift in Headers */ = {isa = PBXBuildFile; fileRef = E5E95A3C1C0C84C60053B701 /* SensorTag.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		E56E3BD51C0C8AB700746B64 /* MobileEdgeController.swift in Headers */ = {isa = PBXBuildFile; fileRef = E5E95A3D1C0C84C60053B701 /* MobileEdgeController.swift */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -22,9 +21,9 @@
 		E56E3BDD1C0C8AB700746B64 /* AbstractModel.swift in Headers */ = {isa = PBXBuildFile; fileRef = E5E95A451C0C84C60053B701 /* AbstractModel.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		E57D30371C0F562C006B7099 /* BLESensorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D30361C0F562C006B7099 /* BLESensorsManager.swift */; };
 		E57D30391C0F56AA006B7099 /* BLEOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D30381C0F56AA006B7099 /* BLEOperations.swift */; };
+		E593CE131C7078FE00643CD6 /* commonClassifier.js in Resources */ = {isa = PBXBuildFile; fileRef = E593CE121C7078FE00643CD6 /* commonClassifier.js */; };
 		E5E36E491C01B947006FF683 /* IBMMobileEdge.h in Headers */ = {isa = PBXBuildFile; fileRef = E5E36E481C01B947006FF683 /* IBMMobileEdge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5E36E501C01B947006FF683 /* IBMMobileEdge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5E36E451C01B947006FF683 /* IBMMobileEdge.framework */; };
-		E5E36E551C01B947006FF683 /* IBMMobileEdgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E36E541C01B947006FF683 /* IBMMobileEdgeTests.swift */; };
 		E5E95A461C0C84C60053B701 /* SensorTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E95A3C1C0C84C60053B701 /* SensorTag.swift */; };
 		E5E95A471C0C84C60053B701 /* MobileEdgeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E95A3D1C0C84C60053B701 /* MobileEdgeController.swift */; };
 		E5E95A481C0C84C60053B701 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E95A3E1C0C84C60053B701 /* Events.swift */; };
@@ -50,16 +49,14 @@
 
 /* Begin PBXFileReference section */
 		E53AEF0C1C3A95CC00416ECE /* Classification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classification.swift; sourceTree = "<group>"; };
-		E5697C6D1C58BC2B008FB6FC /* commonClassifier.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = commonClassifier.js; sourceTree = "<group>"; };
 		E56E3BCC1C0C887A00746B64 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		E57D30361C0F562C006B7099 /* BLESensorsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLESensorsManager.swift; sourceTree = "<group>"; };
 		E57D30381C0F56AA006B7099 /* BLEOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEOperations.swift; sourceTree = "<group>"; };
+		E593CE121C7078FE00643CD6 /* commonClassifier.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = commonClassifier.js; sourceTree = "<group>"; };
 		E5E36E451C01B947006FF683 /* IBMMobileEdge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IBMMobileEdge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5E36E481C01B947006FF683 /* IBMMobileEdge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBMMobileEdge.h; sourceTree = "<group>"; };
 		E5E36E4A1C01B947006FF683 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5E36E4F1C01B947006FF683 /* IBMMobileEdge.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IBMMobileEdge.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5E36E541C01B947006FF683 /* IBMMobileEdgeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBMMobileEdgeTests.swift; sourceTree = "<group>"; };
-		E5E36E561C01B947006FF683 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5E95A3C1C0C84C60053B701 /* SensorTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorTag.swift; sourceTree = "<group>"; };
 		E5E95A3D1C0C84C60053B701 /* MobileEdgeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileEdgeController.swift; sourceTree = "<group>"; };
 		E5E95A3E1C0C84C60053B701 /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
@@ -99,7 +96,6 @@
 				E56E3BCC1C0C887A00746B64 /* CoreBluetooth.framework */,
 				E5E36E731C01BBE8006FF683 /* JS */,
 				E5E36E471C01B947006FF683 /* IBMMobileEdge */,
-				E5E36E531C01B947006FF683 /* IBMMobileEdgeTests */,
 				E5E36E461C01B947006FF683 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -135,19 +131,10 @@
 			path = IBMMobileEdge;
 			sourceTree = "<group>";
 		};
-		E5E36E531C01B947006FF683 /* IBMMobileEdgeTests */ = {
-			isa = PBXGroup;
-			children = (
-				E5E36E541C01B947006FF683 /* IBMMobileEdgeTests.swift */,
-				E5E36E561C01B947006FF683 /* Info.plist */,
-			);
-			path = IBMMobileEdgeTests;
-			sourceTree = "<group>";
-		};
 		E5E36E731C01BBE8006FF683 /* JS */ = {
 			isa = PBXGroup;
 			children = (
-				E5697C6D1C58BC2B008FB6FC /* commonClassifier.js */,
+				E593CE121C7078FE00643CD6 /* commonClassifier.js */,
 				E5E95A501C0C85040053B701 /* falldetection.js */,
 			);
 			name = JS;
@@ -254,7 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5697C6E1C58BC2B008FB6FC /* commonClassifier.js in Resources */,
+				E593CE131C7078FE00643CD6 /* commonClassifier.js in Resources */,
 				E5E95A511C0C85040053B701 /* falldetection.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,7 +280,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5E36E551C01B947006FF683 /* IBMMobileEdgeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

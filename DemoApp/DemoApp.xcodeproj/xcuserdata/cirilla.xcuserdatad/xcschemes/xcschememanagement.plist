@@ -4,22 +4,25 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>IBMMobileEdge.xcscheme</key>
+		<key>DemoApp.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<true/>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>E5E36E441C01B947006FF683</key>
+		<key>E50346AA1BE8A41F00B61759</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E5E36E4E1C01B947006FF683</key>
+		<key>E50346BE1BE8A41F00B61759</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E50346C91BE8A41F00B61759</key>
 		<dict>
 			<key>primary</key>
 			<true/>

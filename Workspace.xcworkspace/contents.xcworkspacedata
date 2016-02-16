@@ -2,9 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:IBMMobileEdge/IBMMobileEdge.xcodeproj">
+      location = "group:DemoApp/DemoApp.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:MobileEdge/DemoApp.xcodeproj">
+      location = "group:RecordApp/RecordApp.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:IBMMobileEdge/IBMMobileEdge.xcodeproj">
    </FileRef>
 </Workspace>

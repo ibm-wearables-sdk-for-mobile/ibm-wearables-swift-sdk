@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4AEEAA410054A25255F5533888A06A120B831494",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "7F639C08D3B87F44FD70A0688A45AC437339B75D" : 0,
+    "4AEEAA410054A25255F5533888A06A120B831494" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "946476B3-94C0-4C1F-8608-D913D34AE063",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "7F639C08D3B87F44FD70A0688A45AC437339B75D" : "..\/Git\/MobileEdge",
+    "4AEEAA410054A25255F5533888A06A120B831494" : "MobileEdge\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Workspace",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Workspace.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ibm-wearables-sdk-for-mobile\/ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4AEEAA410054A25255F5533888A06A120B831494"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/hub.jazz.net\/git\/cirilla\/MobileEdge",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7F639C08D3B87F44FD70A0688A45AC437339B75D"
+    }
+  ]
+}

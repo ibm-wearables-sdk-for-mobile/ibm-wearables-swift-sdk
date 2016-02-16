@@ -42,12 +42,12 @@ public class Gemsense : DeviceConnector, GemScanDelegate, GemDelegate {
     
     override public func connect(connectionStatusDelegate:ConnectionStatusDelegate!){
         self.connectionStatusDelegate = connectionStatusDelegate
-        
+    
         isTryingToConnect = true
         
         //connect only if ready, if not it will be connected at the isReady callback
         if isReady{
-            handleConnection()
+           handleConnection()
         }
     }
     
@@ -198,5 +198,5 @@ public class Gemsense : DeviceConnector, GemScanDelegate, GemDelegate {
         
         gyroscopeDataEvents.dataEvent.trigger(gyroscopeData)
     }
-    
+
 }
