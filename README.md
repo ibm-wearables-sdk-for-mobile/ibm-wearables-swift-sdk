@@ -21,7 +21,7 @@ The mobile device is applied as a first-line compute power for processing the hu
 # Documentation
 Please visit the [Wiki](https://github.com/ibm-wearables-sdk-for-mobile/ios/wiki).
 
-# Gesture Recognition (coming soon)
+# Gesture Recognition
 The client-side components of the Gesture Recognition are open source and are available here. Learning a new gesture and generating a corresponding algorithm necessiates utilization of a cloud service that requires an activation code. The code can be freely obtained [here](http://wearables.mybluemix.net/).
 
 ***Act now to Secure your free access to the Gesture Recognition cloud service by registering at: http://wearables.mybluemix.net/*** 
