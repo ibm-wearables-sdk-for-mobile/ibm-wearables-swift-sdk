@@ -3,12 +3,12 @@ This framework facilitates the development of iOS apps that utilize Wearable or 
 
 It is especially helpful for building solutions that use the compute power of the smartphone to interpret raw data from Wearables into meaningful situations that can be acted upon.
 
-It handles the key aspects of utilizing Wearable devices:
+It handles some of the key aspects of building Wearable solutions:
 - Connecting to the Wearable/Nearable Devices.
-- Retrieving data from a specific sensor.
+- Retrieving data from sensors.
 - Making the data available in a standard way regardless of the sensor's make.
 - Interpreting raw data and identifying meaningful situations that can be acted upon.
-- Identifying Gestures (coming soon)
+- Identifying Gestures.
 
 It is accompanied by rich documentation and sample code.
 
