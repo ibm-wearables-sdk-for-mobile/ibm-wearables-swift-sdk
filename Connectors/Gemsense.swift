@@ -21,6 +21,7 @@ public class Gemsense : DeviceConnector, GemScanDelegate, GemDelegate {
     
     var gemManager:GemManager!
     var gem:Gem!
+    var highestRssi:NSNumber!
     
     var accelerometerDataEvents:SensorEvents!
     var gyroscopeDataEvents:SensorEvents!
@@ -31,6 +32,9 @@ public class Gemsense : DeviceConnector, GemScanDelegate, GemDelegate {
     
     var isTryingToConnect = false
     var isReady = false
+    var timer:NSTimer!
+    
+    let scanningTime:NSTimeInterval = 5
     
     override init(){
         super.init()
@@ -44,11 +48,16 @@ public class Gemsense : DeviceConnector, GemScanDelegate, GemDelegate {
         self.connectionStatusDelegate = connectionStatusDelegate
         
         isTryingToConnect = true
+        clearRssi()
         
         //connect only if ready, if not it will be connected at the isReady callback
         if isReady{
             handleConnection()
         }
+    }
+    
+    func clearRssi(){
+        highestRssi = -10000
     }
     
     override public func disconnect(){
@@ -99,12 +108,13 @@ public class Gemsense : DeviceConnector, GemScanDelegate, GemDelegate {
     
     public func onDeviceDiscovered(gem: Gem!, rssi: NSNumber!) {
         
-        NSLog("Gemsense discovered: " + gem.getName())
+        print("Gemsense discovered: \(gem.getName()). With rssi: \(rssi)")
         
-        self.gem = gem
-        self.gem.delegate = self
-        
-        gemManager.connectGem(self.gem)
+        //update the discovered gem if it is higher
+        if rssi.doubleValue > highestRssi.doubleValue {
+            highestRssi = rssi
+            self.gem = gem
+        }
     }
     
     
@@ -126,12 +136,25 @@ public class Gemsense : DeviceConnector, GemScanDelegate, GemDelegate {
     }
     
     func handleConnection(){
+        
         if let current = gem{
             gemManager.connectGem(current)
         }
         else{
             //start scanning
             gemManager.startScan()
+            
+            //start the delay timer to wait until the scan is complete
+            timer = NSTimer.scheduledTimerWithTimeInterval(scanningTime, target: self, selector: "connectToDevice", userInfo: nil, repeats: false)
+        }
+    }
+    
+    func connectToDevice(){
+        if let _ = gem {
+            self.gem.delegate = self
+            gemManager.connectGem(gem)
+            gemManager.stopScan()
+            clearRssi()
         }
     }
     
@@ -139,7 +162,6 @@ public class Gemsense : DeviceConnector, GemScanDelegate, GemDelegate {
         
         switch(state)
         {
-            
         case.Connected:
             updateConnectionStatus(.Connected)
             gemManager.enableRawData(self.gem)

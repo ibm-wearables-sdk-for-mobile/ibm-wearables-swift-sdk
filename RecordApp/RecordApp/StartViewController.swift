@@ -16,16 +16,10 @@ import UIKit
 class StartViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func onCancelClicked(sender: AnyObject) {
-        
-        
         self.dismissViewControllerAnimated(true, completion: nil)
-        /*
-        if let navigationController = self.navigationController {
-            
-            navigationController.popViewControllerAnimated(true)
-        }
-        */
     }
+    
+    
     @IBOutlet weak var startButton: UIButton!
     
     var timer:NSTimer!
@@ -36,7 +30,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        gestureNameTextField.delegate = self;
+        gestureNameTextField.delegate = self
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)

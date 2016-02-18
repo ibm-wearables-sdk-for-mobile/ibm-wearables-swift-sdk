@@ -30,16 +30,9 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func onContinueButtonClicked(sender: AnyObject) {
         
-        //TODO: validate the code
-        
         spinner.startAnimating()
         continueButton.enabled = false
         validateCode();
-        
-        /*
-        AppPreferences.setRegistrationCode(codeText.text!)
-        self.performSegueWithIdentifier("moveToConnect", sender: self)
-        */
     }
     
     func validateCode(){

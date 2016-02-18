@@ -33,6 +33,7 @@ class RecordingViewController: UIViewController {
     let controller = AppDelegate.controller
     var id = ""
     var url = ""
+    var uuid = ""
     var gesuteCouner = 1
     var recordingDots = 0
     var sensitivity:Double!
@@ -56,6 +57,7 @@ class RecordingViewController: UIViewController {
         
         id = ""
         url = ""
+        uuid = ""
         gesuteCouner = 1
         sensitivity = nil
         
@@ -150,7 +152,7 @@ class RecordingViewController: UIViewController {
             if let resultViewController = segue.destinationViewController as? ResultViewController{
                 
                 resultViewController.url = url
-                resultViewController.id = id
+                resultViewController.uuid = uuid
                 resultViewController.sensitivity = sensitivity
             }
         }
@@ -198,12 +200,10 @@ class RecordingViewController: UIViewController {
         }
     }
     
-    
     @IBAction func onStopButtonClicked(sender: AnyObject) {
         turnSensorsOff()
         self.performSegueWithIdentifier("moveToFinal", sender: self)
     }
-    
     
     @IBAction func onPauseButtonClicked(sender: AnyObject) {
         
@@ -216,7 +216,6 @@ class RecordingViewController: UIViewController {
         
         //validate the the date usign the service
         RequestUtils.sendTrainRequest(AppDelegate.accelerometerRecordData, gyroscopeData: AppDelegate.gyroscopeRecordData, uuid: id, onSuccess: onTrainRequestSuccess, onFailure: onTrainRequestError)
-        
     }
     
     func disableButtons(){
@@ -238,7 +237,6 @@ class RecordingViewController: UIViewController {
     
     func turnSensorsOn(){
         print("On")
-        
         
         //this will enable data syncronization again
         isDataSyncronizationDone = false
@@ -264,8 +262,12 @@ class RecordingViewController: UIViewController {
             self.url = url as! String
         }
         
-        if let id = result["UUID"] {
+        if let id = result["id"] {
             self.id = id as! String
+        }
+        
+        if let uuid = result["UUID"] {
+            self.uuid = "\(uuid)"//id as! String
         }
         
         if let sensitivity = result["sensitivity"] {

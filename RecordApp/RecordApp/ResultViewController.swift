@@ -14,9 +14,9 @@
 
 import UIKit
 
-class ResultViewController: UIViewController {
+class ResultViewController: UIViewController, UITextFieldDelegate {
     
-    var id:String!
+    var uuid:String!
     var url:String!
     var sensitivity:Double!
     
@@ -27,15 +27,18 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var downloadView: UIView!
     
-    //@IBOutlet weak var saveButton: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Record completed"
         
-        idText.text = id
-        urlText.text = url
+        
+        urlText.delegate = self
+        idText.delegate = self
+        
+        
+        idText.text = uuid
+        urlText.text = url.substringFromIndex(url.startIndex.advancedBy(8))
         
         
         dispatch_async(dispatch_get_main_queue()) {
@@ -46,37 +49,23 @@ class ResultViewController: UIViewController {
             
             self.downloadView.hidden = true
             self.resultView.hidden = false
-            //self.saveButton.enabled = true
-            
-            //Utils.showMsgDialog("Algorithm succesfully saved to local storage!")
         }
     }
     
     @IBAction func onDoneButtonClicked(sender: AnyObject) {
-        
-        //self.saveButton.enabled = false
-        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    /*
-    @IBAction func onSaveToDeviceClicked(sender: AnyObject) {
-        
-        self.saveButton.enabled = false
-        
-        dispatch_async(dispatch_get_main_queue()) {
-            
-            SensitivityUtils.set(AppDelegate.trainingGestureName, sensitivity: self.sensitivity)
-            self.downloadFile(self.url, toPath: FileUtils.getFilePath(AppDelegate.trainingGestureName))
-            
-            self.saveButton.enabled = true
-            Utils.showMsgDialog("Algorithm succesfully saved to local storage!")
-        }
-    }
-    */
     @IBAction func onTapDetected(sender: AnyObject) {
         view.endEditing(true)
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        dismissKeyboard()
+        return false
+    }
     
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }

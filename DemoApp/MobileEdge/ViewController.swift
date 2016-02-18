@@ -95,9 +95,9 @@ class ViewController: UIViewController, ConnectionStatusDelegate{
     
     //this function will be called every time the accelerometer data is changed
     func updateAccelerometerUIData(data: AccelerometerData){
-        x.text = "\(Float(data.x))"
-        y.text = "\(Float(data.y))"
-        z.text = "\(Float(data.z))"
+        x.text = String(format:"%.4f", data.x)
+        y.text = String(format:"%.4f", data.y)
+        z.text = String(format:"%.4f", data.z)
     }
     
     func showMobileEdgeDialog(message:String){

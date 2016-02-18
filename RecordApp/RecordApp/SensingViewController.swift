@@ -46,6 +46,8 @@ class SensingViewController: UIViewController, UITableViewDataSource, UITableVie
         
         //load all the JS files (it is safe to load the same JS file more than once)
         classification.loadGesturesByFilePath(FileUtils.getAllFilePaths())
+        
+        
     }
 
     override func viewDidAppear(animated: Bool){
@@ -112,8 +114,6 @@ class SensingViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func onGestureDetected(additonalInfo: AnyObject!) {
-        
-        //print(additonalInfo)
         
         dispatch_async(dispatch_get_main_queue()) {
             
