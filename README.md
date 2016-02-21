@@ -17,7 +17,7 @@ It is accompanied by rich documentation and sample code.
 This framework follows the paradigm illustrated in the diagram below: 
 The mobile device is applied as a first-line compute power for processing the huge amount of data coming from Wearable devices and turning it into insights on the user's current context and situation. You may then trigger the necessary actions or send the insightful information to the cloud for further processing and interoperasbility with other applications.
 
-![header](https://cloud.githubusercontent.com/assets/16938963/12744518/6b4d7b82-c99d-11e5-9a1c-8867a2dc4179.png)
+![readmemain-01](https://cloud.githubusercontent.com/assets/13234255/13203271/4ae552c8-d8bd-11e5-97c8-2c0e1204e445.png)
 
 
 # Documentation
