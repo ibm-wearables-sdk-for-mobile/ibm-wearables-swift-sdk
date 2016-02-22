@@ -35,14 +35,27 @@ class ConnectViewController: UIViewController, ConnectionStatusDelegate, UIPicke
         spinner.stopAnimating()
         statusLable.hidden = true
         
-        //pickerData.append(MicrosoftBand())
-        //pickerData.append(Gemsense())
+        setUpConnectors()
     }
     
-    
+    func setUpConnectors(){
+        for connector in AppDelegate.applicationConnectors{
+            pickerData.append(connector)
+        }
+    }
     
     @IBAction func onConnectButtonClicked(sender: AnyObject) {
         
+        if (pickerData.count > 0){
+            performConnection()
+        }
+        
+        else{
+            Utils.showMsgDialog(self, withMessage: "You have not defined any connectors. Please refer to the wiki page (at GitHub.com) for detailed instructions");
+        }
+    }
+    
+    func performConnection(){
         connectButton.enabled = false
         spinner.startAnimating()
         statusLable.hidden = false

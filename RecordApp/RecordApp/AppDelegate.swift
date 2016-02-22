@@ -24,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static var accelerometerRecordData = [[Double]]()
     static var gyroscopeRecordData = [[Double]]()
     static var trainingGestureName:String!
+    
+    //list of available connectors in the application
+    static var applicationConnectors:[DeviceConnector] = [MicrosoftBand(), Gemsense()]
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
