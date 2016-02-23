@@ -38,6 +38,8 @@ class ConnectViewController: UIViewController, ConnectionStatusDelegate, UIPicke
         setUpConnectors()
     }
     
+    
+    //set up the list of avalible connectors
     func setUpConnectors(){
         for connector in AppDelegate.applicationConnectors{
             pickerData.append(connector)

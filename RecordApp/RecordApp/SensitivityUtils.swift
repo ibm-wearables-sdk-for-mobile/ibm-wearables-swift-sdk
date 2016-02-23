@@ -14,7 +14,7 @@
 
 import Foundation
 
-
+//handle the sensitivity values
 class SensitivityUtils {
     
     static let prefs = NSUserDefaults.standardUserDefaults()

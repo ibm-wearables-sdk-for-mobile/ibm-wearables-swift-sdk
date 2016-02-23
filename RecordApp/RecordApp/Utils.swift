@@ -18,22 +18,16 @@ import IBMMobileEdge
 
 class Utils {
     
+    //display dialog for spesific view controller
     static func showMsgDialog(vc:UIViewController, withMessage message:String){
         
         let alert = UIAlertController(title: "Record Application", message: message, preferredStyle: .Alert)
         let continueAction = UIAlertAction(title: "Continue", style: .Default, handler: nil)
         alert.addAction(continueAction)
         vc.presentViewController(alert, animated: true, completion: nil)
-        
-        /*
-        let alert:UIAlertView = UIAlertView()
-        alert.title = "Record Application"
-        alert.message = message
-        alert.addButtonWithTitle("Continue")
-        alert.show()
-        */
     }
     
+    //download a file to spesific path
     static func downloadFile(url:String, toPath path:String){
         if let jsFileUrl = NSURL(string: url) {
             if NSFileManager().fileExistsAtPath(path) {
@@ -47,23 +41,4 @@ class Utils {
             }
         }
     }
-    
-    /*
-    static func updateSensitivityInJS(){
-        
-        var payload = Dictionary<String,AnyObject>()
-        
-        //before using the function, common needs to be loaded
-        JSEngine.instance.loadJS("commonClassifier")
-        
-        for name in FileUtils.getJsFileNames(){
-            payload[name] = SensitivityUtils.get(name)
-        }
-        
-        if payload.count > 0{
-            print("set sensitivity payload = \(payload)")
-            JSEngine.instance.executeMethod("setGesturesSensitivity", payload: payload)
-        }
-    }
-    */
 }

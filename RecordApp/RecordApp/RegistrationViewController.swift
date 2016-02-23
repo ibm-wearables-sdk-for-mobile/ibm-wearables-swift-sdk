@@ -11,9 +11,9 @@ import UIKit
 class RegistrationViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var codeText: UITextField!
-    
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,14 +29,13 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func onContinueButtonClicked(sender: AnyObject) {
-        
         spinner.startAnimating()
         continueButton.enabled = false
         validateCode();
     }
     
+    //make code validation
     func validateCode(){
-        
         if let code = codeText.text{
             RequestUtils.sendValidationRequest(code, onSuccess: onValidCode, onFailure: onInvalidCode)
         }
@@ -46,6 +45,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //this function will be called in case the code is valid
     func onValidCode(){
         dispatch_async(dispatch_get_main_queue()) {
             self.spinner.stopAnimating()
@@ -55,6 +55,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //this function will be called in case the code is invalid
     func onInvalidCode(){
         dispatch_async(dispatch_get_main_queue()) {
             self.spinner.stopAnimating()

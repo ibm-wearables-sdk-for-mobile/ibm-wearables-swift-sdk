@@ -14,6 +14,7 @@
 
 import Foundation
 
+//holds the data and the sensitivity values
 class Data {
     
     var name:String

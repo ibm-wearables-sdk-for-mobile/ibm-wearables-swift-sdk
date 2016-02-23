@@ -39,7 +39,7 @@ class TestingViewController: UIViewController, UITableViewDataSource, UITableVie
         })
     }
     
-    
+    //update the table data
     func updateData(){
         tableData.removeAll()
         
@@ -103,8 +103,8 @@ class TestingViewController: UIViewController, UITableViewDataSource, UITableVie
         //first delete the file from local storage
         FileUtils.deleteJSFile(tableData[tableIndexToDelete.row].name)
         
-        //unload it from the JS code
-        JSEngine.instance.executeMethod("removeGesture", payload: tableData[tableIndexToDelete.row].name) // .toDictionary()
+        //unload the gesture from the JS code
+        JSEngine.instance.executeMethod("removeGesture", payload: tableData[tableIndexToDelete.row].name)
         
         //update the UI
         table.beginUpdates()

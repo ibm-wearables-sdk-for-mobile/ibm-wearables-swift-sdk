@@ -15,27 +15,13 @@
 import UIKit
 import IBMMobileEdge
 
+//cell to display the data and the sensitivity values
 class DataCell: UITableViewCell {
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var sensativity: UITextField!
     
     var sourceData:Data!
-    
-    /*
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    */
-
-    /*
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    */
     
     func setData(data:Data){
         sourceData = data
@@ -49,18 +35,4 @@ class DataCell: UITableViewCell {
         //change the sensativity pref
         SensitivityUtils.set(sourceData.name, sensitivity: sourceData.sensitivity)
     }
-    
-    /*
-    func updateSensitivityInJS(){
-        
-        var payload = Dictionary<String,AnyObject>()
-        
-        for name in FileUtils.getJsFileNames(){
-            payload[name] = SensitivityUtils.get(name)
-        }
-        
-        print("set sensitivity payload = \(payload)")
-        JSEngine.instance.executeMethod("setGesturesSensitivity", payload: payload)
-    }
-    */
 }

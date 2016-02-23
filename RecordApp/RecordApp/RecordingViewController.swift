@@ -42,7 +42,7 @@ class RecordingViewController: UIViewController {
     let gyroscopeListenerName = "gyroscopeListener"
     var isDataSyncronizationDone = false
     var logFile = ""
-    let minimunNumberOfIterations = 4
+    let minimunNumberOfIterations = 4 //minmum number of iteration before the user can save the gesture
     
     
     override func viewDidLoad() {
@@ -252,10 +252,10 @@ class RecordingViewController: UIViewController {
     }
     
     @IBAction func onContinueButtonClicked(sender: AnyObject) {
-        
         startCounter()
     }
     
+    //this function is called after each succesul recorded iteration
     func onTrainRequestSuccess(result:NSDictionary!){
         
         if let url = result["jsURI"] {
@@ -303,6 +303,7 @@ class RecordingViewController: UIViewController {
         }
     }
     
+    //this function is called in case the recorded iteration was rejected
     func onTrainRequestError(msg:String!){
         
         dispatch_async(dispatch_get_main_queue()) {

@@ -21,19 +21,14 @@ class SensingViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var detectionView: UIView!
     @IBOutlet weak var sensingView: UIView!
-    
     @IBOutlet weak var detectedScore: UILabel!
     @IBOutlet weak var detectedGesture: UILabel!
-    
     @IBOutlet weak var table: UITableView!
-    
     @IBOutlet weak var tableView: UIStackView!
+    
     let controller = AppDelegate.controller
     let classification = Classification()
-    let jsEngine = JSEngine.instance
-
     var timer:NSTimer!
-    
     var tableData = [ResultData]()
     
     
@@ -46,8 +41,6 @@ class SensingViewController: UIViewController, UITableViewDataSource, UITableVie
         
         //load all the JS files (it is safe to load the same JS file more than once)
         classification.loadGesturesByFilePath(FileUtils.getAllFilePaths())
-        
-        
     }
 
     override func viewDidAppear(animated: Bool){
@@ -58,9 +51,10 @@ class SensingViewController: UIViewController, UITableViewDataSource, UITableVie
         //update the sensativity of the calssifier 
         updateSensitivity()
         
-        //controller.registerInterpretation(classification, withListener: onGestureDetected)
+        //register the classification
         controller.registerInterpretation(classification)
         
+        //turn on the sensors
         controller.sensors.accelerometer.on()
         controller.sensors.gyroscope.on()
     }
@@ -72,6 +66,7 @@ class SensingViewController: UIViewController, UITableViewDataSource, UITableVie
         controller.sensors.accelerometer.off()
         controller.sensors.gyroscope.off()
         
+        //unregister classification before exiting the screen
         controller.unregisterInterpretation(classification)
     }
     
@@ -144,11 +139,13 @@ class SensingViewController: UIViewController, UITableViewDataSource, UITableVie
         synthesizer.speakUtterance(utterance)
     }
     
+    //update the detected gesture text
     func updateGestureData(gestureName:String, score:Int, otherInfo:String){
         detectedGesture.text = gestureName
         detectedScore.text = "Likelihood: \(score)%"
     }
     
+    //clear the detected data text from screen
     func clearDetectedData(){
         sensingView.hidden = false
         detectionView.hidden = true

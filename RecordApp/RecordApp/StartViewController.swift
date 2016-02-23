@@ -11,21 +11,16 @@
 *   See the License for the specific language governing permissions and
 *   limitations under the License.
 */
+
 import UIKit
 
 class StartViewController: UIViewController, UITextFieldDelegate {
     
-    @IBAction func onCancelClicked(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var gestureNameTextField: UITextField!
     
     var timer:NSTimer!
     var counterValue = 3
-
-    @IBOutlet weak var gestureNameTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +38,10 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     
     func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    @IBAction func onCancelClicked(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func onStartButtonClicked(sender: AnyObject) {
@@ -67,12 +66,12 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func isGestureExists() -> Bool{
+    func isGestureExists() -> Bool {
         return FileUtils.getJsFileNames().contains(gestureNameTextField.text!)
     }
     
     
-    func isGestureNameEmpty() -> Bool{
+    func isGestureNameEmpty() -> Bool {
         let characteres = gestureNameTextField.text?.characters
         return characteres?.count == 0
     }

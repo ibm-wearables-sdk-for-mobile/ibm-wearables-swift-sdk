@@ -16,10 +16,13 @@ import Foundation
 
 class FileUtils {
     
+    
+    //get file path of a gesture file by name
     static func getFilePath(name:String) -> String{
         return (NSTemporaryDirectory() as NSString).stringByAppendingPathComponent("\(name).js")
     }
-    
+
+    //get all the gesture file names
     static func getJsFileNames() -> [String]{
         
         var fileNames = [String]()
@@ -35,6 +38,7 @@ class FileUtils {
         return fileNames
     }
     
+    //get all gestures file paths
     static func getAllFilePaths() -> [String]{
         
         var filePaths = [String]()
@@ -46,6 +50,7 @@ class FileUtils {
         return filePaths
     }
     
+    //delete gesture file by name
     static func deleteJSFile(name:String){
         let filemanager = NSFileManager()
         try! filemanager.removeItemAtPath(getFilePath(name))
