@@ -15,7 +15,7 @@ It handles some of the key aspects of building Wearable solutions:
 It is accompanied by rich documentation and sample code.
 
 This framework follows the paradigm illustrated in the diagram below: 
-The mobile device is applied as a first-line computation resource for processing the huge amount of data coming from Wearable Devices and turning it into insights about the user's current context and situation. You may then trigger the necessary actions or send the insightful information to the cloud for further processing and interoperability with other applications.
+The mobile device is applied as a first-line computation resource for processing the huge amount of data collected from Wearable Devices and turning it into insights about the user's current context and situation. You may then trigger the necessary actions or send the insightful information to the cloud for further processing and interoperability with other applications.
 
 ![readmemain-01](https://cloud.githubusercontent.com/assets/13234255/13203271/4ae552c8-d8bd-11e5-97c8-2c0e1204e445.png)
 
