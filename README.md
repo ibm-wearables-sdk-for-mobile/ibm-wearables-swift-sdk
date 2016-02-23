@@ -1,21 +1,21 @@
 ![swiftlogo](https://cloud.githubusercontent.com/assets/13234255/13202965/cfe9dafc-d8b3-11e5-96ed-4aadaf169448.png)
 
 # Overview
-This framework facilitates the development of iOS apps that utilize Wearable or Nearable Devices. It helps develop those apps in just a fraction of the time and requires only minimal knowledge of the Wearable/Nearable domain.
+This framework facilitates the development of iOS apps that utilize Wearable or Nearable Devices. It facilitates the development in just a fraction of the time and requires only minimal knowledge of the Wearable/Nearable domain.
 
-It is especially helpful for building solutions that use the compute power of the smartphone to interpret raw data from Wearables into meaningful situations that can be acted upon.
+It is especially helpful for building solutions that use the computing power of the smartphone to interpret raw data from Wearables into meaningful situations that can be acted upon.
 
 It handles some of the key aspects of building Wearable solutions:
-- Connecting to the Wearable/Nearable Devices.
-- Retrieving data from sensors.
-- Making the data available in a standard way regardless of the sensor's make.
-- Interpreting raw data and identifying meaningful situations that can be acted upon.
-- Identifying Gestures.
+- Connecting to the Wearable/Nearable Devices
+- Retrieving data from sensors
+- Making the data available in a standard way regardless of the sensor's make
+- Interpreting raw data and identifying meaningful situations that can be acted upon
+- Identifying Gestures
 
 It is accompanied by rich documentation and sample code.
 
 This framework follows the paradigm illustrated in the diagram below: 
-The mobile device is applied as a first-line compute power resource for processing the huge amount of data coming from Wearable devices and turning it into insights about the user's current context and situation. You may then trigger the necessary actions or send the insightful information to the cloud for further processing and interoperability with other applications.
+The mobile device is applied as a first-line computation resource for processing the huge amount of data coming from Wearable Devices and turning it into insights about the user's current context and situation. You may then trigger the necessary actions or send the insightful information to the cloud for further processing and interoperability with other applications.
 
 ![readmemain-01](https://cloud.githubusercontent.com/assets/13234255/13203271/4ae552c8-d8bd-11e5-97c8-2c0e1204e445.png)
 
