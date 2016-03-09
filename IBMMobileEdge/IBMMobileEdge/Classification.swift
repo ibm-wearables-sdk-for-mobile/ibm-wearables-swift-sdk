@@ -55,13 +55,11 @@ public class Classification : BaseInterpretation{
     }
     
     func accelerometerDataChanged(data:AccelerometerData) {
-        print("Accelerometer")
         accelerometerDataArrays.append([data.x,data.y,data.z])
         executeCalassification()
     }
     
     func gyroscopeDataChanged(data:GyroscopeData){
-        print("Gyroscope")
         gyroscopeDataArrays.append([data.x,data.y,data.z])
         executeCalassification()
     }
@@ -69,7 +67,6 @@ public class Classification : BaseInterpretation{
     func executeCalassification(){
         
         if (accelerometerDataArrays.count > 3 && gyroscopeDataArrays.count > 3){
-            
             
             //make correction to data syncronization
             makeDataSyncronizationFix()
@@ -95,10 +92,12 @@ public class Classification : BaseInterpretation{
                 nofifyStatusUpdate(scores)
             }
             
+            /*
             if let resultFromJs = result{
                 print("Result from Calassification \(NSDate())")
                 print(resultFromJs)
             }
+            */
             
         }
     }

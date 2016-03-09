@@ -48,6 +48,9 @@ class SensingViewController: UIViewController, UITableViewDataSource, UITableVie
         
         clearDetectedData()
         
+        //clear the JS detected history
+        JSEngine.instance.executeMethod("newSession", payload: [])
+        
         //update the sensativity of the calssifier 
         updateSensitivity()
         
