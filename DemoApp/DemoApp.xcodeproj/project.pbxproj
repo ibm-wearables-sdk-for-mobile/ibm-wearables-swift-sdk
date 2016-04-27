@@ -12,8 +12,6 @@
 		E50346B41BE8A41F00B61759 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E50346B21BE8A41F00B61759 /* Main.storyboard */; };
 		E50346B61BE8A41F00B61759 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E50346B51BE8A41F00B61759 /* Assets.xcassets */; };
 		E50346B91BE8A41F00B61759 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E50346B71BE8A41F00B61759 /* LaunchScreen.storyboard */; };
-		E511777F1C73613300951E63 /* IBMMobileEdge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E511777D1C7360F900951E63 /* IBMMobileEdge.framework */; };
-		E51177801C73613300951E63 /* IBMMobileEdge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E511777D1C7360F900951E63 /* IBMMobileEdge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,20 +30,6 @@
 			remoteInfo = MobileEdge;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		E5BA72591C282C3100D8FABF /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				E51177801C73613300951E63 /* IBMMobileEdge.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E50346AB1BE8A41F00B61759 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,7 +50,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E511777F1C73613300951E63 /* IBMMobileEdge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,7 +114,6 @@
 				E50346A71BE8A41F00B61759 /* Sources */,
 				E50346A81BE8A41F00B61759 /* Frameworks */,
 				E50346A91BE8A41F00B61759 /* Resources */,
-				E5BA72591C282C3100D8FABF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

@@ -23,8 +23,6 @@
 		E5714FCC1C4BC00000D17106 /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5714FCB1C4BC00000D17106 /* FileUtils.swift */; };
 		E571F3591C677D3C00770B07 /* LogUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E571F3581C677D3C00770B07 /* LogUtils.swift */; };
 		E573C8691C2005AB005E4A7B /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E573C8681C2005AB005E4A7B /* StartViewController.swift */; };
-		E57D61C71C7366BC0052AA30 /* IBMMobileEdge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E57D61C61C7366BC0052AA30 /* IBMMobileEdge.framework */; };
-		E57D61C91C7366C50052AA30 /* IBMMobileEdge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E57D61C61C7366BC0052AA30 /* IBMMobileEdge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E5AC08CF1C43D1A900E5908A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AC08CE1C43D1A900E5908A /* Utils.swift */; };
 		E5BA72561C28271900D8FABF /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA72551C28271900D8FABF /* ConnectViewController.swift */; };
 		E5BA725B1C282E4B00D8FABF /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA725A1C282E4B00D8FABF /* RecordingViewController.swift */; };
@@ -48,20 +46,6 @@
 			remoteInfo = RecordApp;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		E524EFCF1C51079C0094E398 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				E57D61C91C7366C50052AA30 /* IBMMobileEdge.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E502EB941C4793D80084C807 /* SensitivityUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensitivityUtils.swift; sourceTree = "<group>"; };
@@ -98,7 +82,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E57D61C71C7366BC0052AA30 /* IBMMobileEdge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,7 +185,6 @@
 				E50DBFF51C1DB121005666CB /* Sources */,
 				E50DBFF61C1DB121005666CB /* Frameworks */,
 				E50DBFF71C1DB121005666CB /* Resources */,
-				E524EFCF1C51079C0094E398 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
