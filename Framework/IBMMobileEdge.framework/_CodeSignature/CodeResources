@@ -26,7 +26,7 @@
 		</data>
 		<key>Headers/IBMMobileEdge-Swift.h</key>
 		<data>
-		WyFSxpnFAI0F/H9yvWp1tlBfCnA=
+		vBR3/d0Jh0wgG4wlMZ2XKBMFsYM=
 		</data>
 		<key>Headers/IBMMobileEdge.h</key>
 		<data>
@@ -54,23 +54,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		imsdXlZezxqSwFp92YJQI4tMDUA=
+		q89XdCffDMgIjKFZzQVSGi+VQUg=
 		</data>
 		<key>Modules/IBMMobileEdge.swiftmodule/arm.swiftdoc</key>
 		<data>
-		BzI8Jt3YViSIlLfjl+MZQMPOsdY=
+		tL9tyyR+uMIdMGeuSPqj0Rgr8z0=
 		</data>
 		<key>Modules/IBMMobileEdge.swiftmodule/arm.swiftmodule</key>
 		<data>
-		V+ycCL/j3db7ZJ4RFU/0QEbhWtQ=
+		hNVoqtw9GmaOwhFGCnyem960IT0=
 		</data>
 		<key>Modules/IBMMobileEdge.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		MPvzwktcuSmfvzYlzbBGn3laFGo=
+		VH+hzEtrTKi+K5n9cKCzqnRkK+Q=
 		</data>
 		<key>Modules/IBMMobileEdge.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		lvOaJI3mfiZnE1J1MS3tgQOEl/M=
+		sg5W1Vu6d3mrVn5rLGLK0ZwBPaA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -78,7 +78,7 @@
 		</data>
 		<key>commonClassifier.js</key>
 		<data>
-		kz30APf2oyMCbF8MzrSUng3tMoE=
+		Y+b0pvQOjQ4nB0xzCew0qyBL/jU=
 		</data>
 		<key>falldetection.js</key>
 		<data>
@@ -88,81 +88,214 @@
 	<key>files2</key>
 	<dict>
 		<key>Headers/AbstractModel.swift</key>
-		<data>
-		VuQSpTRR+h5GTCJdyaGMqN5ErxQ=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			VuQSpTRR+h5GTCJdyaGMqN5ErxQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			YRec0fxin0SIlCBEQ+ejkRoZaInybUg17LSWcS1mIWA=
+			</data>
+		</dict>
 		<key>Headers/BLEDeviceDriver.swift</key>
-		<data>
-		Mn80NRlrTiMREcORyDPGjOTfq30=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			Mn80NRlrTiMREcORyDPGjOTfq30=
+			</data>
+			<key>hash2</key>
+			<data>
+			Tf7LgJp2zIH02VBiF89aUnT/jmEUM0tAWJb5HcmrqV8=
+			</data>
+		</dict>
 		<key>Headers/Callbacks.swift</key>
-		<data>
-		DRfXQPh9U9dEqc4thm935Zq7XnE=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			DRfXQPh9U9dEqc4thm935Zq7XnE=
+			</data>
+			<key>hash2</key>
+			<data>
+			MAVjK0tpJyVwoG9cLPZA5+96HmNI2A6rM942AvSLjQs=
+			</data>
+		</dict>
 		<key>Headers/DeviceDriver.swift</key>
-		<data>
-		X4LVMuNSeh7URmr8a5B4OoxHgWE=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			X4LVMuNSeh7URmr8a5B4OoxHgWE=
+			</data>
+			<key>hash2</key>
+			<data>
+			Vtk7/F4IxkX6ycVb8nJ0umkLZJ2NHHNcpZR2ucTBb/c=
+			</data>
+		</dict>
 		<key>Headers/Events.swift</key>
-		<data>
-		SntrFdEaSG60hWSb25hrB2cxw/g=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			SntrFdEaSG60hWSb25hrB2cxw/g=
+			</data>
+			<key>hash2</key>
+			<data>
+			MeSNouUtmqK5EzrftiTqZLfOCWE7plmoxbxHksV5Xyo=
+			</data>
+		</dict>
 		<key>Headers/IBMMobileEdge-Swift.h</key>
-		<data>
-		WyFSxpnFAI0F/H9yvWp1tlBfCnA=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			vBR3/d0Jh0wgG4wlMZ2XKBMFsYM=
+			</data>
+			<key>hash2</key>
+			<data>
+			ukjEhowpck4SPNkocAdGErebsla9CQ/h6+gcwcOH4tY=
+			</data>
+		</dict>
 		<key>Headers/IBMMobileEdge.h</key>
-		<data>
-		AYhmrSACymky6ZYiz7l/lPEgdQM=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			AYhmrSACymky6ZYiz7l/lPEgdQM=
+			</data>
+			<key>hash2</key>
+			<data>
+			JC+32LGH4uC2HH44VMeZlIZhtF3vgOFRpCSfk3TmagI=
+			</data>
+		</dict>
 		<key>Headers/Interpretation.swift</key>
-		<data>
-		Tyr7YQ73UlZkyeRWveapL+dKjYU=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			Tyr7YQ73UlZkyeRWveapL+dKjYU=
+			</data>
+			<key>hash2</key>
+			<data>
+			u0/wfwWhjADZ0YobosTZMfrob0+21JkF0gqM5rKPRp4=
+			</data>
+		</dict>
 		<key>Headers/JSEngine.swift</key>
-		<data>
-		9kPXJCC/GqPALiSy6IC+0pt6Xhs=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			9kPXJCC/GqPALiSy6IC+0pt6Xhs=
+			</data>
+			<key>hash2</key>
+			<data>
+			YRnZ77MzO+ZxLfnmBcjAM8NzoHL1ctDZ4fdtP2VGdxQ=
+			</data>
+		</dict>
 		<key>Headers/MobileEdgeController.swift</key>
-		<data>
-		NjlJjaEioqKKwNPRyq3kewH20cY=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			NjlJjaEioqKKwNPRyq3kewH20cY=
+			</data>
+			<key>hash2</key>
+			<data>
+			Q9zn0vkSVl6g++llx4TZnIb2jRAGk5hT5/wE2kwoxWM=
+			</data>
+		</dict>
 		<key>Headers/SensorTag.swift</key>
-		<data>
-		4KIq4iO6gUeA8NybmvImlqC7TEQ=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			4KIq4iO6gUeA8NybmvImlqC7TEQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			HsLCayumHPJ/FvhjT6J/3DkG/TPp5iaWr0oNYANiFBw=
+			</data>
+		</dict>
 		<key>Headers/Sensors.swift</key>
-		<data>
-		a2O+EXzW/ws+kiSBR0UoXh36XVc=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			a2O+EXzW/ws+kiSBR0UoXh36XVc=
+			</data>
+			<key>hash2</key>
+			<data>
+			hZ3039nJAb7ScOvRqjus+Ll2qEgyuMxl9/cJrJ6Kq48=
+			</data>
+		</dict>
 		<key>Modules/IBMMobileEdge.swiftmodule/arm.swiftdoc</key>
-		<data>
-		BzI8Jt3YViSIlLfjl+MZQMPOsdY=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			tL9tyyR+uMIdMGeuSPqj0Rgr8z0=
+			</data>
+			<key>hash2</key>
+			<data>
+			gTSPHAP086bssqfyJT5ynf0JomCZSf8hL57HiCxnwg0=
+			</data>
+		</dict>
 		<key>Modules/IBMMobileEdge.swiftmodule/arm.swiftmodule</key>
-		<data>
-		V+ycCL/j3db7ZJ4RFU/0QEbhWtQ=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			hNVoqtw9GmaOwhFGCnyem960IT0=
+			</data>
+			<key>hash2</key>
+			<data>
+			jsXhLX6F1PzrJp9L5/KWmMXkCNfOvG+VbeaurfnwCyI=
+			</data>
+		</dict>
 		<key>Modules/IBMMobileEdge.swiftmodule/arm64.swiftdoc</key>
-		<data>
-		MPvzwktcuSmfvzYlzbBGn3laFGo=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			VH+hzEtrTKi+K5n9cKCzqnRkK+Q=
+			</data>
+			<key>hash2</key>
+			<data>
+			pKaWsEjdwtSfS5CHxig1ual4bu3OyUn1Gh973LjpnGY=
+			</data>
+		</dict>
 		<key>Modules/IBMMobileEdge.swiftmodule/arm64.swiftmodule</key>
-		<data>
-		lvOaJI3mfiZnE1J1MS3tgQOEl/M=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			sg5W1Vu6d3mrVn5rLGLK0ZwBPaA=
+			</data>
+			<key>hash2</key>
+			<data>
+			DHcwK58N0pi+sOt1uU5oTIOfLsTKw/KO5GGaCduJiVc=
+			</data>
+		</dict>
 		<key>Modules/module.modulemap</key>
-		<data>
-		pczn9hd0tToJdZRhg2niq3RrbvY=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			pczn9hd0tToJdZRhg2niq3RrbvY=
+			</data>
+			<key>hash2</key>
+			<data>
+			eRosK0PG3IOjDhLDbFORlwBGs1d5+8s3v1sP22oXvaQ=
+			</data>
+		</dict>
 		<key>commonClassifier.js</key>
-		<data>
-		kz30APf2oyMCbF8MzrSUng3tMoE=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			Y+b0pvQOjQ4nB0xzCew0qyBL/jU=
+			</data>
+			<key>hash2</key>
+			<data>
+			DN7sxXtFoLhrjv7+WD7Xo8zpZzwqARJF8RWnvXLJBaw=
+			</data>
+		</dict>
 		<key>falldetection.js</key>
-		<data>
-		L53IDuUohUloy6+Dz5j0wkAdelY=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			L53IDuUohUloy6+Dz5j0wkAdelY=
+			</data>
+			<key>hash2</key>
+			<data>
+			gUs//ZHNMSIlPxHSovIdaa5h8nJPWGK2hBe4D/1Uhas=
+			</data>
+		</dict>
 	</dict>
 	<key>rules</key>
 	<dict>
