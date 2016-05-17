@@ -62,7 +62,7 @@
 		</data>
 		<key>Modules/IBMMobileEdge.swiftmodule/arm.swiftmodule</key>
 		<data>
-		hNVoqtw9GmaOwhFGCnyem960IT0=
+		dI6mUdpvC03L41K+EiV3habvoWI=
 		</data>
 		<key>Modules/IBMMobileEdge.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>Modules/IBMMobileEdge.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		sg5W1Vu6d3mrVn5rLGLK0ZwBPaA=
+		1ck92uJML32Ivdxe2WAPXeudA2M=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -234,11 +234,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			hNVoqtw9GmaOwhFGCnyem960IT0=
+			dI6mUdpvC03L41K+EiV3habvoWI=
 			</data>
 			<key>hash2</key>
 			<data>
-			jsXhLX6F1PzrJp9L5/KWmMXkCNfOvG+VbeaurfnwCyI=
+			dJC5YhiZNybn4xOcjboTlLV/ZmlOX/opNUmqJ3bASYE=
 			</data>
 		</dict>
 		<key>Modules/IBMMobileEdge.swiftmodule/arm64.swiftdoc</key>
@@ -256,11 +256,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			sg5W1Vu6d3mrVn5rLGLK0ZwBPaA=
+			1ck92uJML32Ivdxe2WAPXeudA2M=
 			</data>
 			<key>hash2</key>
 			<data>
-			DHcwK58N0pi+sOt1uU5oTIOfLsTKw/KO5GGaCduJiVc=
+			Pbm2DyyL2FenIxgVoJmxyywKJP9yp90WqespS+XGmwo=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

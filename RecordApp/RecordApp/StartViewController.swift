@@ -57,7 +57,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         */
         
         else if (isGestureExists()){
-            Utils.showMsgDialog(self, withMessage: "Gesture with name '\(gestureNameTextField.text!)' already exists. choose diffrent name")
+            Utils.showMsgDialog(self, withMessage: "Gesture with name '\(gestureNameTextField.text!)' already exists. choose different name")
         }
         
         else {

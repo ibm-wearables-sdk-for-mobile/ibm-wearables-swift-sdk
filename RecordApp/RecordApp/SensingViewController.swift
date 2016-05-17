@@ -39,8 +39,14 @@ class SensingViewController: UIViewController, UITableViewDataSource, UITableVie
         classification.registerListener(onGestureDetected)
         classification.registerStatusListener(onGestureStatusUpdated)
         
+        //clear the JS detected history
+        //JSEngine.instance.executeMethod("newSession", payload: [])
+        
         //load all the JS files (it is safe to load the same JS file more than once)
         classification.loadGesturesByFilePath(FileUtils.getAllFilePaths())
+        
+        //remove the disabled gestures
+        setGesturesStatus()
     }
 
     override func viewDidAppear(animated: Bool){
@@ -48,11 +54,14 @@ class SensingViewController: UIViewController, UITableViewDataSource, UITableVie
         
         clearDetectedData()
         
-        //clear the JS detected history
-        JSEngine.instance.executeMethod("newSession", payload: [])
+        //clear the table
+        tableData.removeAll()
+        table.reloadData()
+        
+        
         
         //update the sensativity of the calssifier 
-        updateSensitivity()
+        //updateSensitivity()
         
         //register the classification
         controller.registerInterpretation(classification)
@@ -73,6 +82,16 @@ class SensingViewController: UIViewController, UITableViewDataSource, UITableVie
         controller.unregisterInterpretation(classification)
     }
     
+    func setGesturesStatus(){
+        for name in FileUtils.getJsFileNames(){
+            if (SensitivityUtils.isDisabled(name)){
+                JSEngine.instance.executeMethod("disableGesture", payload: name)
+            }
+            else{
+                JSEngine.instance.executeMethod("enableGesture", payload: name)
+            }
+        }
+    }
     
     //update the classification class with the saved values of the sensitivity
     func updateSensitivity(){
@@ -80,7 +99,14 @@ class SensingViewController: UIViewController, UITableViewDataSource, UITableVie
         var payload = Dictionary<String,Double>()
         
         for name in FileUtils.getJsFileNames(){
-            payload[name] = SensitivityUtils.get(name)
+            
+            if (SensitivityUtils.isDisabled(name)){
+                payload[name] = 0.0
+            }
+            
+            else{
+                payload[name] = SensitivityUtils.get(name)
+            }
         }
         
         classification.setSensitivity(payload)

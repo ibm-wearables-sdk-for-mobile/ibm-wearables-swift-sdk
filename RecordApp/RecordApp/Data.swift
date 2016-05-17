@@ -19,9 +19,11 @@ class Data {
     
     var name:String
     var sensitivity:Double
+    var isDisabled:Bool
     
-    init(name:String, withSensativity sensativity:Double){
+    init(name:String, sensativity:Double, isDisabled:Bool){
         self.name = name
         self.sensitivity = sensativity
+        self.isDisabled = isDisabled
     }
 }

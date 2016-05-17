@@ -20,7 +20,7 @@ class TestingViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var table: UITableView!
     
     var tableData = [Data]()
-    var tableIndexToDelete:NSIndexPath!
+    var tableIndexForOperation:NSIndexPath!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,7 @@ class TestingViewController: UIViewController, UITableViewDataSource, UITableVie
         
         //get the updated list of files
         for name in FileUtils.getJsFileNames(){
-            tableData.append(Data(name: name, withSensativity: SensitivityUtils.get(name)))
+            tableData.append(Data(name: name, sensativity: SensitivityUtils.get(name),isDisabled: SensitivityUtils.isDisabled(name)))
         }
     }
     
@@ -74,6 +74,39 @@ class TestingViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
     
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?  {
+        
+        var enableDisableAction:UITableViewRowAction!
+        
+        //hold the index for the current operation
+        tableIndexForOperation = indexPath
+        
+        if (tableData[tableIndexForOperation.row].isDisabled){
+            enableDisableAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Enable" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+                self.setGestureDisableStatus(indexPath,isDisabled: false)
+            })
+        }
+        
+        else{
+            enableDisableAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Disable" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+                let dataToDisable = self.tableData[indexPath.row]
+                self.confirmDisable(dataToDisable.name)
+            })
+        }
+       
+        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            
+            let dataToDelete = self.tableData[indexPath.row]
+            self.confirmDelete(dataToDelete.name)
+        })
+        
+        return [enableDisableAction,deleteAction]
+    }
+    
+    
+    
+    /*
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             tableIndexToDelete = indexPath
@@ -81,12 +114,13 @@ class TestingViewController: UIViewController, UITableViewDataSource, UITableVie
             confirmDelete(dataToDelete.name)
         }
     }
+    */
     
     func confirmDelete(gestureName: String) {
         let alert = UIAlertController(title: "Delete Gesture", message: "Are you sure you want to delete \(gestureName)?", preferredStyle: .ActionSheet)
         
         let DeleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: handleDeleteGesture)
-        let CancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: cancelDeleteGesture)
+        let CancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: handleCancelOfOperation)
         
         alert.addAction(DeleteAction)
         alert.addAction(CancelAction)
@@ -97,25 +131,53 @@ class TestingViewController: UIViewController, UITableViewDataSource, UITableVie
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
+    func confirmDisable(gestureName: String) {
+        let alert = UIAlertController(title: "Disable Gesture", message: "Are you sure you want to disable \(gestureName)?", preferredStyle: .ActionSheet)
+        
+        let DeleteAction = UIAlertAction(title: "Disable", style: .Destructive, handler: handleDisableGesture)
+        let CancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: handleCancelOfOperation)
+        
+        alert.addAction(DeleteAction)
+        alert.addAction(CancelAction)
+        
+        alert.popoverPresentationController?.sourceView = self.view
+        alert.popoverPresentationController?.sourceRect = CGRectMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0, 1.0, 1.0)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
     
     func handleDeleteGesture(alertAction: UIAlertAction!) -> Void {
         
         //first delete the file from local storage
-        FileUtils.deleteJSFile(tableData[tableIndexToDelete.row].name)
+        FileUtils.deleteJSFile(tableData[tableIndexForOperation.row].name)
         
         //unload the gesture from the JS code
-        JSEngine.instance.executeMethod("removeGesture", payload: tableData[tableIndexToDelete.row].name)
+        JSEngine.instance.executeMethod("removeGesture", payload: tableData[tableIndexForOperation.row].name)
         
         //update the UI
         table.beginUpdates()
-        tableData.removeAtIndex(tableIndexToDelete.row)
+        tableData.removeAtIndex(tableIndexForOperation.row)
         
-        table.deleteRowsAtIndexPaths([tableIndexToDelete], withRowAnimation: .Automatic)
-        tableIndexToDelete = nil
+        table.deleteRowsAtIndexPaths([tableIndexForOperation], withRowAnimation: .Automatic)
+        tableIndexForOperation = nil
         table.endUpdates()
     }
     
-    func cancelDeleteGesture(alertAction: UIAlertAction!) {
-        tableIndexToDelete = nil
+    func setGestureDisableStatus(rowIndex:NSIndexPath, isDisabled:Bool){
+        tableData[tableIndexForOperation.row].isDisabled = isDisabled
+        
+        print(tableIndexForOperation.row)
+        table.reloadRowsAtIndexPaths([tableIndexForOperation], withRowAnimation: .Right)
+        //table.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+        //table.reloadData()
+    }
+    
+    func handleDisableGesture(alertAction: UIAlertAction!) -> Void {
+        setGestureDisableStatus(tableIndexForOperation, isDisabled: true)
+    }
+    
+    
+    func handleCancelOfOperation(alertAction: UIAlertAction!) {
+        tableIndexForOperation = nil
     }
 }

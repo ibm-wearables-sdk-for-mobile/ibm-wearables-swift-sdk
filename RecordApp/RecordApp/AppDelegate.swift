@@ -26,10 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static var trainingGestureName:String!
     
     //list of available connectors in the application
-    static var applicationConnectors:[DeviceConnector] = [MicrosoftBand(), Gemsense()]
+    static var applicationConnectors:[DeviceConnector] = [iOS()]
     
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
         
         
         //if the user already entered the registration id, skip directly to the connection screen

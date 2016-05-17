@@ -25,9 +25,22 @@ class SensitivityUtils {
     
     static func delete(name:String){
         prefs.removeObjectForKey(name)
+        prefs.removeObjectForKey(getStatusPrefName(name))
     }
     
     static func get(name:String) -> Double{
         return prefs.doubleForKey(name)
+    }
+    
+    static func setDisableStatus(name:String, isDisabled:Bool){
+        prefs.setBool(isDisabled, forKey: getStatusPrefName(name))
+    }
+    
+    static func isDisabled(name:String) -> Bool{
+        return prefs.boolForKey(getStatusPrefName(name))
+    }
+    
+    static private func getStatusPrefName(name:String) -> String{
+        return "\(name)_status"
     }
 }

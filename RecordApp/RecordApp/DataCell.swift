@@ -27,6 +27,12 @@ class DataCell: UITableViewCell {
         sourceData = data
         name.text = data.name
         sensativity.text = "\(data.sensitivity)"
+        
+        name.enabled = !data.isDisabled
+        sensativity.enabled = !data.isDisabled
+        
+        //will update the status in the prefs
+        SensitivityUtils.setDisableStatus(sourceData.name, isDisabled: data.isDisabled)
     }
 
     @IBAction func onSensitivityChanged(sender: AnyObject) {

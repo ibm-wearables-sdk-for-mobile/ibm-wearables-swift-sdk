@@ -54,6 +54,7 @@ class RequestUtils {
                     post = try NSJSONSerialization.JSONObjectWithData(responseData, options: []) as! NSDictionary
                 } catch  {
                     print("error parsing response from POST on /posts")
+                    onFailure()
                     return
                 }
                 
@@ -131,7 +132,7 @@ class RequestUtils {
                 do {
                     post = try NSJSONSerialization.JSONObjectWithData(responseData, options: []) as! NSDictionary
                 } catch  {
-                    print("error parsing response from POST on /posts")
+                    onFailure("Error parsing response from POST")
                     return
                 }
 
