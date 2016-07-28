@@ -2,6 +2,7 @@
 var isDebug = false,
 recognized,
 gestureSensitivity = {},
+notDetected = {"detected" : false},
 DELAY = 2,
 global = {};
 
@@ -9,6 +10,9 @@ global.gestures = [];
 global.disabledGestures = [];
 global.maxLength = global.maxLength || 0;
 global.classifierHistory = [];
+
+var minLength = 100;
+var maxLength = 1;
 
 var debugMessage = function(message) {
     if(isDebug) debug(message);
@@ -20,7 +24,16 @@ var newSession = function() {
 
 var detectGesture = function(payload) {
     var resultGyroAcc = getJointGyroAccelDataClassify(payload);
-    return slidingWindow(resultGyroAcc, global.gestures, global.maxLength);
+    for (var i=0;i<global.gestures.length;i++) {
+        if (global.gestures[i].avgSeqLength < minLength) minLength = global.gestures[i].avgSeqLength;
+    }
+    for (var i=0;i<global.gestures.length;i++) {
+        if (global.gestures[i].avgSeqLength > maxLength) maxLength = global.gestures[i].avgSeqLength;
+    }
+    debugMessage("Mi:" +minLength +" "+maxLength);
+    global.maxLength = (minLength + maxLength)/2;
+    //return slidingWindow(resultGyroAcc, global.gestures, global.maxLength);
+    return slidingWindow(resultGyroAcc, global.gestures, maxLength);
 }
 
 var setGesturesSensitivity = function(newGesturesSensitivity) {
@@ -47,27 +60,29 @@ var removeGesture = function(name) {
 
 var enableGesture = function(name) {
     global.disabledGestures.forEach(function(arr, i) {
-         if(global.disabledGestures[i].gesture == name) {
-        	global.gestures.push(global.disabledGestures[i]);
-         	global.disabledGestures.splice(i,1);
-         }
-         });
+                                    if(global.gestures[i].gesture == name) {
+                                    global.gestures.push(global.disabledGestures[i]);
+                                    global.disabledGestures.splice(i,1);
+                                    }
+                                    });
     recalcMaxLength();
 };
 
 var disableGesture = function(name) {
-	 global.gestures.forEach(function(arr, i) {
-         if(global.gestures[i].gesture == name) {
-         	global.disabledGestures.push(global.gestures[i]);
-         	global.gestures.splice(i,1);
-         }
-         });
+    global.gestures.forEach(function(arr, i) {
+                            if(global.gestures[i].gesture == name) {
+                            global.disabledGestures.push(global.gestures[i]);
+                            global.gestures.splice(i,1);
+                            }
+                            });
     recalcMaxLength();
 };
 var recalcMaxLength = function(name) {
-    var newMaxLength = 0;
+    var newMaxLength = 100;
     global.gestures.forEach(function(arr, i) {
-                            newMaxLength = Math.max(newMaxLength, global.gestures[i].avgSeqLength || 0);
+                            if(getSensitivity(gestures[i])!=0) {
+                            newMaxLength = Math.max(newMaxLength, gestures[i].avgSeqLength);
+                            }
                             });
     global.maxLength = newMaxLength;
 }
@@ -100,19 +115,31 @@ var getJointGyroAccelDataClassify = function(msg) {
  * Builds a sliding window with length of longest gesture
  */
 var slidingWindow = function(payload, gestures, maxSeqLength) {
-    var funcResult = {"detected" : false};
+    var funcResult = notDetected;
     for (var i=0; i<payload.length; i++) {
+        debugMessage("Max: " + maxSeqLength);
         if (global.classifierHistory.length < maxSeqLength) {
             global.classifierHistory.push(payload[i]);
         } else {
+            //console.log(global.classifierHistory);
             global.classifierHistory.shift();
             global.classifierHistory.shift(); //sasha
             global.classifierHistory.shift(); //sasha - shift by 3 for sliding win
             global.classifierHistory.push(payload[i]);
             var newMsg = global.classifierHistory;
             var result = classify(newMsg, gestures);
+            //            global.classifierHistory.shift();
+            //            global.classifierHistory.shift(); //sasha
+            //            global.classifierHistory.shift(); //sasha - shift by 3 for sliding win
             global.delay = global.delay || 0;
             if (result && result.detected === true && global.delay < new Date().getTime()) {
+                //console.log(global.classifierHistory);
+                //global.classifierHistory.fill([0,0,0,0,0,0]);
+                for(i=0;i<maxSeqLength;i++){
+                    global.classifierHistory.shift();
+                    global.classifierHistory.push([0,0,0,0,0,0]);
+                }
+                //console.log(global.classifierHistory);
                 global.delay = new Date().getTime() + (1000 * DELAY);
                 funcResult = result;
             } else if (result && result.detected === false && funcResult && funcResult.detected == false) {
@@ -122,12 +149,11 @@ var slidingWindow = function(payload, gestures, maxSeqLength) {
     }
     return funcResult;
 }
-
 /*
  * Classify gesture
  */
 var classify = function(msg, gestures) {
-    var NUM_STATES = 6; //6
+    var NUM_STATES = 8; //6
     var matches = new Array(gestures.length); // Default probability of each gesture
     var matchesNorm = new Array(gestures.length); // probability of each gesture
     var gestPercent = new Array(gestures.length); // recognition percentage of each gesture
@@ -137,7 +163,7 @@ var classify = function(msg, gestures) {
     for (var i=0; i<gestures.length; i++) {
         dec[i] = 0;
         var sensitivity = getSensitivity(gestures[i]);
-        if (!gestures[i].isSelected) continue; // check gesture is selected for classification
+        if (!gestures[i].isSelected || sensitivity === 0.0) continue; // check gesture is selected for classification
         var rawObservation = msg.slice(0,gestures[i].avgSeqLength);
         var a = gestures[i].transitions;
         var b = gestures[i].emissions;
@@ -151,15 +177,22 @@ var classify = function(msg, gestures) {
         
         // create sequence based on gesture codebook
         var observation = [];
-
+        
         for (var k=0; k<rawObservation.length; k++) {
             var dataPoint = rawObservation[k];
             // compute nearest neighbor (code) for the input data point
             var minDistance = Number.MAX_VALUE;
             var closestNeighbor = 1;
+            
+            //var factor = [];
+            //for(var i3=0; i3<6; i3++) {
+            //   factor[i3] = codebook[0][i3]/rawObservation[0][i3];
+            //}
+            
             for (var j in codebook) {
                 var distanceSum = 0;
                 for(var i2=0; i2<6; i2++)
+                    //distanceSum += Math.pow(codebook[j][i2] - factor[i2]*dataPoint[i2], 2);
                     distanceSum += Math.pow(codebook[j][i2] - dataPoint[i2], 2);
                 var distance = Math.sqrt(distanceSum);
                 if (distance < minDistance) {
@@ -209,52 +242,56 @@ var classify = function(msg, gestures) {
         
         for (var s = 0; s < NUM_STATES; s++) {
             for (var o = 0; o < observation.length; o++) {
-                if (path[s][o] == NUM_STATES - 1) {dec[i] = 1;}
+                //if (path[s][o] == NUM_STATES - 1) {dec[i] = 1;}
+                if (ml[1] == NUM_STATES - 1) {dec[i] = 1;}
             }
         }
         if (ml[1] != null) {
             debugMessage("ML0: " + 1/(-1*Math.log(ml[0])/gestures[i].avgSeqLength) + " ML1: " + ml[1]);
-        }        
+        }
         
         // compute probability of observation (forward algorithm)
         /*
-        var f = new Array(NUM_STATES);
-        for (var j = 0; j < NUM_STATES; j++) {
-            f[j] = new Array(observation.length);
-        }
-        for (var l = 0; l < f.length; l++) {
-            if (!b[l]) console.warn(gestures[i]);
-            f[l][0] = pi[l] * b[l][observation[0]-1];
-        }
-        for (var j = 1; j < observation.length; j++) {
-            for (var k = 0; k < f.length; k++) {
-                var sum = 0.0;
-                for (var l = 0; l < NUM_STATES; l++) {
-                    sum += f[l][j-1] * a[l][k];
-                }
-                f[k][j] = sum * b[k][observation[j]-1];
-            }
-        }
-        
-        // compute gesture's probability by summing probabilities of all states
-        var prob = 0.0;
-        for (var j = 0; j < f.length; j++) {
-            prob += f[j][f[j].length - 1];
-        }
-        */
+         var f = new Array(NUM_STATES);
+         for (var j = 0; j < NUM_STATES; j++) {
+         f[j] = new Array(observation.length);
+         }
+         for (var l = 0; l < f.length; l++) {
+         if (!b[l]) console.warn(gestures[i]);
+         f[l][0] = pi[l] * b[l][observation[0]-1];
+         }
+         for (var j = 1; j < observation.length; j++) {
+         for (var k = 0; k < f.length; k++) {
+         var sum = 0.0;
+         for (var l = 0; l < NUM_STATES; l++) {
+         sum += f[l][j-1] * a[l][k];
+         }
+         f[k][j] = sum * b[k][observation[j]-1];
+         }
+         }
+         
+         // compute gesture's probability by summing probabilities of all states
+         var prob = 0.0;
+         for (var j = 0; j < f.length; j++) {
+         prob += f[j][f[j].length - 1];
+         }
+         */
         
         var prob = ml[0];
         
         
         // add gesture's probability to global variables
         matches[i] = prob;
-        matchesNorm[i] = (prob > 0) ? 1/(-1*Math.log(prob)/gestures[i].avgSeqLength) : 0;
-        
+        matchesNorm[i] = prob;
+        //matchesNorm[i] = (prob > 0) ? 1/(-1*Math.log(prob)/gestures[i].avgSeqLength) : 0;
+        matchesNorm[i] = (prob > 0) ? 1/(-1*Math.log(prob)) : 0;
+        //matchesNorm[i] = (prob > 0) ? 1/(-1*Math.log(prob)/(gestures[i].avgSeqLength / 30)) : 0;
+        debugMessage("MinL: " + minLength);
         if (matchesNorm[i] > 0) {
             debugMessage(gestures[i].gesture + ": " + matchesNorm[i]);
         }
         sumGestures += matchesNorm[i];
-        gestPercent[i] = Math.max(matchesNorm[i] - sensitivity/100,0);
+        gestPercent[i] = Math.max(matchesNorm[i] - sensitivity/100,0.0001);
         sumgestPercent += gestPercent[i];
     }
     var scoresInfo = [];
@@ -266,7 +303,7 @@ var classify = function(msg, gestures) {
     for (var i=0; i<gestures.length; i++) {
         var tmpgesture = matchesNorm[i];
         var sensitivity = getSensitivity(gestures[i]);
-        if (!gestures[i].isSelected) continue; // check gesture is selected for classification
+        if (!gestures[i].isSelected || sensitivity === 0.0) continue; // check gesture is selected for classification
         if(typeof matchesNorm[i] !== 'undefined') {
             scoresInfo.push({"name": gestures[i].gesture, "score": matchesNorm[i].toFixed(3), "sensitivity":  sensitivity.toFixed(3)});
             debugMessage(i + " : " + gestures[i].gesture + " : " + matchesNorm[i] + " sensitivity: " + sensitivity);
@@ -274,7 +311,7 @@ var classify = function(msg, gestures) {
         
         var tmpmodel = 1/sensitivity;
         //var tmpmodel = 1;
-        if(dec[i]*((tmpmodel*tmpgesture)/sumGestures)>recogprob) {
+        if(dec[i]*((tmpmodel*tmpgesture)/sumGestures)>recogprob && (gestPercent[i]  > 0.0001)) {
             probgesture=tmpgesture;
             probmodel=tmpmodel;
             recogprob=((tmpmodel*tmpgesture)/sumGestures);
@@ -304,7 +341,7 @@ var classify = function(msg, gestures) {
             return jsonObj;
         }
     }
-    var result = {"detected" : false};
+    var result = notDetected;
     if (scoresInfo.length > 0) {
         result.additionalInfo = {
         others: scoresInfo
