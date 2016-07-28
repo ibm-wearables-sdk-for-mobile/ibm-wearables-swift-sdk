@@ -66,38 +66,39 @@ public class Classification : BaseInterpretation{
     
     func executeCalassification(){
         
-        if (accelerometerDataArrays.count > 3 && gyroscopeDataArrays.count > 3){
+        if (accelerometerDataArrays.count > 2 && gyroscopeDataArrays.count > 2){
+            
             
             //make correction to data syncronization
             makeDataSyncronizationFix()
             
-            //build the payload using the first 4 values
+            //build the payload using the first 3 values
             var payload = Dictionary<String,AnyObject>()
             
-            payload["accelerometer"] = [accelerometerDataArrays[0],accelerometerDataArrays[1],accelerometerDataArrays[2],accelerometerDataArrays[3]]
-            payload["gyroscope"] = [gyroscopeDataArrays[0],gyroscopeDataArrays[1],gyroscopeDataArrays[2],gyroscopeDataArrays[3]]
+            payload["accelerometer"] = [accelerometerDataArrays[0],accelerometerDataArrays[1],accelerometerDataArrays[2]]
+            payload["gyroscope"] = [gyroscopeDataArrays[0],gyroscopeDataArrays[1],gyroscopeDataArrays[2]]
             
             //execute the js engine
             let result = jsEngine.executeMethod("detectGesture", payload: payload).toDictionary()
             
-            //remove the first 4 value from the buffer
-            accelerometerDataArrays.removeFirst(4)
-            gyroscopeDataArrays.removeFirst(4)
+            //remove the first 3 value from the buffer
+            accelerometerDataArrays.removeFirst(3)
+            gyroscopeDataArrays.removeFirst(3)
             
             if result["detected"] as! Bool == true{
                 notifyResult(result["additionalInfo"])
             }
-            
+                
             else if let scores = result["additionalInfo"]{
                 nofifyStatusUpdate(scores)
             }
             
             /*
-            if let resultFromJs = result{
-                print("Result from Calassification \(NSDate())")
-                print(resultFromJs)
-            }
-            */
+             if let resultFromJs = result{
+             print("Result from Calassification \(NSDate())")
+             print(resultFromJs)
+             }
+             */
             
         }
     }
@@ -111,7 +112,7 @@ public class Classification : BaseInterpretation{
             accelerometerDataArrays.removeFirst(accelerometerLength - gyroscopeLenght)
             print("Info: Data correction fix, dropped first \(accelerometerLength - gyroscopeLenght) reads of accelerometer")
         }
-        
+            
         else if (gyroscopeLenght > accelerometerLength){
             gyroscopeDataArrays.removeFirst(gyroscopeLenght - accelerometerLength)
             print("Info: Data correction fix, dropped first \(gyroscopeLenght - accelerometerLength) reads of gyroscope")
